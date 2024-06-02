@@ -1,0 +1,70 @@
+
+
+services:
+
+
+  ipfs0:
+    container_name: ipfs0
+    image: ipfs/kubo:latest
+    ports:
+     - "4001:4001" # ipfs swarm 
+     - "5001:5001" # ipfs api 
+     - "8080:8080" # ipfs gateway 
+    volumes:
+      - ./compose/ipfs0:/data/ipfs
+      - ./initipfs.sh:/container-init.d/initipfs.sh
+      - ./swarm.key:/swarm.key
+    #environment: 
+    #  IPFS_SWARM_KEY_FILE: ./swarm.key
+    #  IPFS_SWARM_KEY: /key/swarm/psk/1.0.0/
+    #                  /base16/
+    #                 3a3bb244a1eefdef63c9e19d68d97bd7a45fab6bf13b154254142b3e12a15b9f 
+    #  Se tendria que setear como env
+  cluster0:
+    container_name: cluster0
+    image: ipfs/ipfs-cluster:latest
+    depends_on:
+      - ipfs0
+    environment:
+      CLUSTER_PEERNAME: cluster0
+      CLUSTER_SECRET: 3a3bb244a1eefdef63c9e19d68d97bd7a45fab6bf13b154254142b3e12a15b9f 
+      CLUSTER_IPFSHTTP_NODEMULTIADDRESS: /dns4/ipfs0/tcp/5001
+      CLUSTER_CRDT_TRUSTEDPEERS: '*' # Trust all peers in Cluster
+      CLUSTER_RESTAPI_HTTPLISTENMULTIADDRESS: /ip4/0.0.0.0/tcp/9094 # Expose API
+      CLUSTER_MONITORPINGINTERVAL: 2s # Speed up peer discovery
+    ports:
+            - "9094:9094" # Open API port 
+            - "9095:9095" # Cluster IPFS Proxy endpoint
+            - "9096:9096" # Cluster swarm endpoint
+    volumes:
+      - ./compose/cluster0:/data/ipfs-cluster
+
+  
+  ipfs1:
+    container_name: ipfs1
+    image: ipfs/kubo:latest
+    volumes:
+      - ./compose/ipfs1:/data/ipfs
+      - ./initipfs.sh:/container-init.d/initipfs.sh
+      - ./swarm.key:/swarm.key
+    #environment: 
+    #  IPFS_SWARM_KEY_FILE: ./swarm.key
+    #  IPFS_SWARM_KEY: /key/swarm/psk/1.0.0/
+    #                  /base16/
+    #                  3a3bb244a1eefdef63c9e19d68d97bd7a45fab6bf13b154254142b3e12a15b9f 
+    #Se tendria que setear como env
+    
+  cluster1:
+    container_name: cluster1
+    image: ipfs/ipfs-cluster:latest
+    depends_on:
+      - ipfs1
+    environment:
+      CLUSTER_PEERNAME: cluster1
+      CLUSTER_SECRET: 3a3bb244a1eefdef63c9e19d68d97bd7a45fab6bf13b154254142b3e12a15b9f 
+      CLUSTER_IPFSHTTP_NODEMULTIADDRESS: /dns4/ipfs1/tcp/5001
+      CLUSTER_CRDT_TRUSTEDPEERS: '*' # Trust all peers in Cluster
+      CLUSTER_MONITORPINGINTERVAL: 2s # Speed up peer discovery
+    
+    volumes:
+      - ./compose/cluster1:/data/ipfs-cluster

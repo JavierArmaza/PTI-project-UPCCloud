@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e6c13ad2.css",
+    "main.js": "/static/js/main.1a282c64.js",
+    "static/js/453.fa78074c.chunk.js": "/static/js/453.fa78074c.chunk.js",
+    "static/media/careers.gif": "/static/media/careers.d52bd856cfeeaa929d68.gif",
+    "static/media/press.gif": "/static/media/press.6e081e43837a477c3549.gif",
+    "static/media/privacy.gif": "/static/media/privacy.1b21779956d6bad1e091.gif",
+    "static/media/sergi.jpg": "/static/media/sergi.35eb8c6cffc4bffa4d2d.jpg",
+    "static/media/javier.jpg": "/static/media/javier.5656622ad24b5184e28d.jpg",
+    "static/media/sofia.jpg": "/static/media/sofia.16c4a893092f2bcf5d81.jpg",
+    "static/media/pablo.jpg": "/static/media/pablo.900332dc2eb3bb7fab18.jpg",
+    "static/media/terms-conditions.jpg": "/static/media/terms-conditions.6e83283a98261d96f925.jpg",
+    "static/media/upccloud_logo.png": "/static/media/upccloud_logo.97692f2ad8c6bb47df5f.png",
+    "static/media/upccloud_name.png": "/static/media/upccloud_name.e3f080caa66334922a40.png",
+    "static/media/block_logo.png": "/static/media/block_logo.76a0e2c1de0a5e3f685c.png",
+    "static/media/back_logo.png": "/static/media/back_logo.0185cb16bc7a1090055b.png",
+    "static/media/kube_logo.png": "/static/media/kube_logo.414f998ca282442f4764.png",
+    "static/media/nginx_logo.png": "/static/media/nginx_logo.0309c74e062f239d990f.png",
+    "static/media/ipfs_logo.png": "/static/media/ipfs_logo.f15a5f07112355f84119.png",
+    "index.html": "/index.html",
+    "main.e6c13ad2.css.map": "/static/css/main.e6c13ad2.css.map",
+    "main.1a282c64.js.map": "/static/js/main.1a282c64.js.map",
+    "453.fa78074c.chunk.js.map": "/static/js/453.fa78074c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.1a282c64.js"
+  ]
+}
